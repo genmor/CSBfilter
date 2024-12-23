@@ -32,5 +32,12 @@ Both functions follow a simple logic: if a sequence has a BUSCO single copy gene
 ### Helper functions
 I've also written wrapper functions that will help the user easily read in `*_full_table.tsv` from BUSCO and the `*.review.assembly` from Juicebox after manual curation. The `read.busco()` function is somewhat trivial, though please note that I've written both `*.filter` functions to use the columns I named in `read.busco`.
 
-#### Additional notes
+#### Additional notes about the functions
 If you have a genome assembly that is not scaffolded using HiC data, then you must use `busco.contig.filter` since you won't have a `*.review.assembly` file.
+
+## What should I do after I generate the filter lists?
+None of the functions in `CSBfilter` do any actual filtering. They generate lists of sequence names that can be fed into external programs that will then subset a genome assembly to include only those in the list. I am sure there are MANY ways to achieve this, but the easiest in my opinion is to use [seqtk](https://github.com/lh3/seqtk). With `seqtk` in your file path, you can use the `subseq` function like below:
+
+```
+seqtk subseq original.assembly.fasta filter.list > filtered.assembly.fasta
+```
