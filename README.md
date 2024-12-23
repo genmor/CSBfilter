@@ -1,3 +1,12 @@
+# Installation
+To install `CSBfilter`, you can do something like the following:
+
+```
+if (!requireNamespace("devtools", quietly = TRUE))
+library(devtools)
+devtools::install_github('genmor/CSBfilter')
+```
+
 # CSBfilter
 `CSBfilter` is a set of functions written in R to generate a list of sequences that should be kept based on gene content completeness and sequence lengths. Gene content completeness is assessed using [BUSCO](https://busco.ezlab.org/) or the recently released [compleasm](https://github.com/huangnengCSU/compleasm). Artifactual duplicates in genome assemblies are somewhat of an inevitability, and many assemblies pipelines include a duplicate contig purging step. Even still, purging is often imperfect, and even the highest quality genome assemblies still have some number of duplicates. The functions I present here are intended to add a "finishing touch", to limit the number of BUSCO duplicates (D) in a genome assembly.
 
