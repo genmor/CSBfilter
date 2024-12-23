@@ -10,7 +10,7 @@ This function takes two main arguments and an optional third.
 2. `busco.out` or `compleasm.out` which are the tsv outputs from either BUSCO or compleasm. Please supply just one or the other.
 3. `out.prefix` (optional; defaults to NULL) an output prefix for the `.txt` format list of the sequence names that should be *KEPT*. Not supplying one will print the list to console without saving a file.
 
-Note: if the user wants to output the inverse list (that is a list of sequences that should be *REMOVED*), then the user should do something like the following:
+Note: if the user wants to output the inverse list (that is a list of sequences that should be *REMOVED*), then the user should do something like the following in `R`:
 
 ```
 out.list<-busco.contig.filter(contig.info = contig.info, busco.out = busco.out)
