@@ -26,7 +26,7 @@ This function takes two main arguments and a third optional one.
 
 This function will write 3 files to disk: a list of sequences to keep, a list of sequences to remove, and a summary of the number of BUSCO genes that are on each sequence.
 
-### How the *.filter functions work
+### How the `*.filter` functions work
 Both functions follow a simple logic: if a sequence has a BUSCO single copy gene or a fragmented gene on it, keep it. If a sequence doesn't have ANY BUSCO genes on it, keep it. If a sequence contains duplicated BUSCO genes, keep the sequence that is longest. `scaffold.filter` has an additional layer to it, which is that it will remove sequences labelled 'debris' during the manual curation process of Juicebox. If a 'debris' sequence contains a single or fragmented BUSCO gene on it, it will be a put in the 'keep' list.
 
 ### Helper functions
