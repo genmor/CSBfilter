@@ -21,7 +21,7 @@ Where `contig.info` contains sequences names in the 1st column.
 ### `scaffold.filter`
 This function takes two main arguments and a third optional one.
 1. `jbat.list` is a list object created from the helper function `read.jbat.review`
-2. `busco.dat` the full_tsv output from BUSCO. Unfortunately, I wrote this prior to learning about compleasm, so this only works with BUSCO full_table.tsv. compleasm does output a BUSCO formatted list, so you can just use that for now.
+2. `busco.dat` the full_table.tsv output from BUSCO. Unfortunately, I wrote this prior to learning about compleasm, so this only works with BUSCO full_table.tsv. compleasm does output a BUSCO formatted list, so you can just use that for now.
 3. `out` (optional, defaults to NULL): an output prefix for the lists that will be saved to disk.
 
 This function will write 3 files to disk: a list of sequences to keep, a list of sequences to remove, and a summary of the number of BUSCO genes that are on each sequence.
