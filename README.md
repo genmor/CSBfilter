@@ -30,7 +30,7 @@ This function will write 3 files to disk: a list of sequences to keep, a list of
 Both functions follow a simple logic: if a sequence has a BUSCO single copy gene or a fragmented gene on it, keep it. If a sequence doesn't have ANY BUSCO genes on it, keep it. If a sequence contains duplicated BUSCO genes, keep the sequence that is longest. `scaffold.filter` has an additional layer to it, which is that it will remove sequences labelled 'debris' during the manual curation process of Juicebox. If a 'debris' sequence contains a single or fragmented BUSCO gene on it, it will be a put in the 'keep' list.
 
 ### Helper functions
-I've also written wrapper functions that will help the user easily read in `*_full_table.tsv` from BUSCO and the `*.review.assembly` from Juicebox after manual curation. The `read.busco()` function is somewhat trivial, though please note that I've written both `*.filter` functions to use the columns I named in `read.busco`.
+I've also written wrapper functions that will help the user easily read in `*_full_table.tsv` from BUSCO and the `*.review.assembly` from Juicebox after manual curation. The `read.busco()` function is somewhat trivial, though please note that I've written both `*.filter` functions to use the columns I named in `read.busco`. With that said, I didn't give the columns outlandish names—everything simply has lower-case letters and uses '_' to show spaces.
 
 #### Additional notes about the functions
 If you have a genome assembly that is not scaffolded using HiC data, then you must use `busco.contig.filter` since you won't have a `*.review.assembly` file.
