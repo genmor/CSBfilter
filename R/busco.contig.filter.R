@@ -60,6 +60,9 @@ busco.contig.filter <- function(
                                                  contig.status.counts$Fragmented > 0), 'sequence']) #keep all sequences that have single copy or fragmented BUSCOs
   }
   if(is.null(busco.out)) {
+    if(!('Interspaced' %in% names(contig.status.counts))) {
+      contig.status.counts$Interspaced<-0
+    }
     keep <- c(keep, contig.status.counts[which(contig.status.counts$Single > 0 |
                                                  contig.status.counts$Fragmented > 0) |
                                            contig.status.counts$Interspaced > 0, 'sequence']) #keep all sequences that have single copy, fragmented or interspaced BUSCOs
@@ -80,10 +83,11 @@ busco.contig.filter <- function(
   dup.seqs$n.seqs.keep <- sapply(1:nrow(dup.seqs), function(x)
     sum(dup.seqs[x, ] %in% keep), simplify = T)
   tmp <- dup.seqs[which(dup.seqs$n.seqs.keep == 0), -ncol(dup.seqs)]
-  contig.lengths <- setNames(contig.info$sequence.length, contig.info$sequence.id)
-  length.mat <- as.matrix((sapply(1:ncol(tmp), function(x)
-    contig.lengths[tmp[, x]], simplify = T)))
-  row.names(length.mat) <- NULL
+  if(nrow(tmp) > 0) {
+    contig.lengths <- setNames(contig.info$sequence.length, contig.info$sequence.id)
+    length.mat <- as.matrix((sapply(1:ncol(tmp), function(x)
+      contig.lengths[tmp[, x]], simplify = T)))
+    row.names(length.mat) <- NULL
   ind <- apply(length.mat, 1, function(x)
     which(max(x, na.rm = T) == x, arr.ind = T))
   dup.keep <- unique(unlist(mapply(
@@ -92,7 +96,9 @@ busco.contig.filter <- function(
     x = 1:nrow(tmp),
     y = ind,
     SIMPLIFY = T
-  )))
+  )))} else {
+    dup.keep<-unique(dups$Sequence)
+  }
 
   keep <- c(keep, dup.keep)
   keep <- unique(keep)
