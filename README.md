@@ -23,7 +23,7 @@ Note: if the user wants to output the inverse list (that is a list of sequences 
 
 ```
 out.list<-busco.contig.filter(contig.info = contig.info, busco.out = busco.out)
-remove.list<-out.list[!(out.list %in% contig.info[,1])]
+remove.list<-contig.info[!(contig.info[, 1] %in% out.list), 1]
 ```
 Where `contig.info` contains sequences names in the 1st column.
 
