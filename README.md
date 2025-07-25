@@ -1,3 +1,8 @@
+# Citation
+If you used CSBfilter in your work, please cite our paper:
+Morinaga, Gen, Darío Balcazar, Athanase Badolo, et al. “From Macro to Micro: De Novo Genomes of Aedes Mosquitoes Enable Comparative Genomics among Close and Distant Relatives.” Genome Biology and Evolution, 2025, evaf142. https://doi.org/10.1093/gbe/evaf142.
+
+
 # Installation
 To install `CSBfilter`, you can do something like the following:
 
